@@ -1,0 +1,32 @@
+Mysql is the open source of RDBMS
+Mysql will run under operating system- linux,windows,oracle
+Queries are not case sensitive
+Mysql versions-- 5,5.2,5.4,5.6,8
+Mysql 5.5 and above is a object oriented RDBMS
+MySql developer
+db-- Database Administrator
+sql command also called Queries
+Mysql is a oracle product
+Mysql is the open source
+Queries can be written in uppercase and lowercase also.
+database is a which we can store the datacreate
+group of colums make a row, tuple, 
+group of tables make a database.
+
+
+
+
+1999--my sql released by mysql company
+1979--
+
+
+Query--
+
+1)select sysdate();
+2)show databases;
+3)create database databasename;
+4)use databasename;-----> For Open the database
+5)show tables;
+6)select * from salespeople;
+7)select * from snum, sname, city from salespeople;
+8)
