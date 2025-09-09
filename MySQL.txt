@@ -17,7 +17,7 @@ group of tables make a database.
 
 
 1999--my sql released by mysql company
-1979--
+
 
 
 Query--
@@ -29,4 +29,3 @@ Query--
 5)show tables;
 6)select * from salespeople;
 7)select * from snum, sname, city from salespeople;
-8)
