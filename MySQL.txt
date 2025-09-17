@@ -5,27 +5,106 @@ Mysql versions-- 5,5.2,5.4,5.6,8
 Mysql 5.5 and above is a object oriented RDBMS
 MySql developer
 db-- Database Administrator
-sql command also called Queries
+Sql command also called Queries
 Mysql is a oracle product
 Mysql is the open source
 Queries can be written in uppercase and lowercase also.
-database is a which we can store the datacreate
-group of colums make a row, tuple, 
-group of tables make a database.
+Database is a which we can store the data in tables.
+Group of colums make a row, tuple, 
+Group of tables make a database.
+Records also knows as tuple.
+Open source means we download the software used for practice.
+Every sql is terminated with (;).
+Every query is breaked into 2-3 lines is required
+Var Clause is not case sensative in sql
+Table consist of minimum one column and can have many rows.
+Every table in my sql is zero or one primary key.
+Table have 1 rows or thousands of rows depending on business growth.
+Salesnum in the column is also field called dbms.Its also called attribute in RDBMS.
+Group of columns make a row.
+In the same way for the DBMS group of fields make a records.
+Group of attribute makes a Tuple.
+Group of Tuple make a table.
+Group of rows make a file.
+Group of records make a table.
+Excel is a spreadsheet
+Example of Spreadsheet:  Excel, Visi Calc(is the first spreadsheet fathr of excel), Lotus 123, Liber Office(Word, Excel, Powerpoint).
+Every field/column/attribute will have data which is called datatype.
+While creating MySQL table datatype has to be declared for the attribute or columns.
+
+Commit: It means to save records
+In MySQL Commit is already done.
+When we add, delete, modify a record Commit is done automatically also. 
+
+Rollback: Opposite of Commit 
+
+
+Sysdate() is a date function.
+In MySQL queries when we adding,modifying a records attributes of character and date datatype should be always in single quote('').
+*****
+#where clause
+It is used for giving conditions to fetch the records from the table in SQL Query.
+It is not case sensitive in MySQL.
+It is case sensative in oracle.
+*****
+
+#Datatypes:-
+Char, Varchar, numeric, Decimal, Date 
+********
+select sum(comm), max(comm), min(comm)
+    -> from salespeople;
+
+In the above quey we are using 3 aggregate or group by function called
+sum(), max(), min()
 
 
 
 
-1999--my sql released by mysql company
 
 
+mysql, oracle, maridb, sqlserver, db2, memsql, mxaccess, postgresql, Alchmeysql, sybase
 
-Query--
 
-1)select sysdate();
+1999--MySQL released by MySQL company
+1979--
+
+***************************************************************************************************************************************************************
+QUERIES ==>
+
+1)select sysdate(); / select sysdate() from dual;---> used for oracle --> dual is a logical table, dual is a compulsory in oracle SQL --> Optional in MySQL Queries.
 2)show databases;
 3)create database databasename;
-4)use databasename;-----> For Open the database
-5)show tables;
-6)select * from salespeople;
-7)select * from snum, sname, city from salespeople;
+4)use databasename; -----> For Open the database
+5)create table salespeople
+    -> (snum numeric(5) primary key,
+    -> sname char(20),
+    -> city varchar(25),
+    -> comm numeric(11,2));
+6)show tables;
+7)desc salespeople; / describe salespeople; --> To see the structural table
+8)select * from salespeople;
+9)insert into salespeople values (1001, 'James Bond', 'London', 3434.34);
+10)select * from salespeople where city='London';
+11) select snum, sname, city
+    -> from salespeople;
+12)select * from salespeople where city='London' or city = 'Bengaluru' or city= 'India';
+13)select * from salespeople where snum=1002;
+14)select sum(comm), max(comm), min(comm)
+    -> from salespeople;
+15) select sum(comm), max(comm)
+    -> from salespeople;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
