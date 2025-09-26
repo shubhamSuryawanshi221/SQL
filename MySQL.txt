@@ -31,8 +31,14 @@ Excel is a spreadsheet
 Example of Spreadsheet:  Excel, Visi Calc(is the first spreadsheet fathr of excel), Lotus 123, Liber Office(Word, Excel, Powerpoint).
 Every field/column/attribute will have data which is called datatype.
 While creating MySQL table datatype has to be declared for the attribute or columns.
+Primary key is always by default NOT NULL.
+Mixup of lstrim and rtrim is called trim.
+Group means to group the records based on a grouping of a non primary key attribute in sql table.
 
-Commit: It means to save records
+***************
+
+
+COMMIT: It means to save records
 In MySQL Commit is already done.
 When we add, delete, modify a record Commit is done automatically also. 
 
@@ -73,8 +79,8 @@ QUERIES ==>
 
 1)select sysdate(); / select sysdate() from dual;---> used for oracle --> dual is a logical table, dual is a compulsory in oracle SQL --> Optional in MySQL Queries.
 2)show databases;
-3)create database databasename;
-4)use databasename; -----> For Open the database
+3)use databasename; -----> For Open the database
+4)create database databasename;
 5)create table salespeople
     -> (snum numeric(5) primary key,
     -> sname char(20),
@@ -94,15 +100,164 @@ QUERIES ==>
 15) select sum(comm), max(comm)
     -> from salespeople;
 
+##Function Heading##
+
+4 Phases of giving headings for any my sql Queries
+
+16) select sum(comm)
+    -> from salespeople;///  select sum(comm)comm
+                              -> from salespeople;
+17)select sum(comm) "Performance bonus"
+    -> from salespeople;
+18) select sum(comm) Insenivte_performance_amount
+    -> from salespeople;
+19)select sum(comm) as "Performance Bonus"
+    -> from salespeople;
+
+##Select Clause Hierarchy##
+
+20) select attribute1, attribute2
+    ->from table1, table2
+    ->where clause
+    ->group by
+    ->having clause
+    ->order by;
+21)Write a query to display the name in upper case and salesnamecity in lower case.
+
+select snum, upper(sname) upper, lower(city) cities, comm
+    -> from salespeople;
+
+=> upper():
+In the above query we are using upper() which is a string function to convert the values in a column of the table into upper case
+only in the output of the query.
+=> Lower():
+It is a string/text function wich will convert lower case values from the field into upper in the output query.
 
 
+22)select length('All the student from this batch gets posted for a great job')
+    -> from dual;
+
+length(): It is count the length of the string/attributes/ field from table which is given in the query. It is very important function
+
+23) select ltrim(city), sname
+    -> from salespeople;
+
+ltrim(): Is used to remove left side blank from the table.
+
+24)select rtrim('  Bengaluru is a nice city    ') from dual;
+
+rtrim(): Reomve the right side blank space from the string.or from attribute in the table.
+it does not physically remove the table it only remove the only output in the query.
+
+25)select upper('James bond is a nice man')
+    -> from dual;
+26)select lower('JAMES bOnd is A nice man')
+    -> from dual;
+27)select length(city) from salespeople;
+
+In the above query the length function we print every size tuple attribute from table. whwn it is not print the value it is null value.
+**********************
+##Nested Function##
+
+Function within the function is called nested function in my sql.
+
+28)select length (rtrim('    Bengaluru is a nice city  ')) from dual;                               
+29)select rtrim('    Bengaluru is a nice city  ') from dual;
+30)select ltrim('    Bengaluru is a nice city  ') from dual;
+31)select trim('    Bengaluru is a nice city  ') from dual;                      --> Mixup of lstrim and rtrim is called trim.
+32)WAQ to fetch city wise how many salespeople are working?
+ select city, count(city) "salesperson working"
+    -> from salespeople
+    -> group by city;                   --> Group means to group the records based on a grouping of a non primary key attribute in sql table.    
+************************
+
+## Like Operator       
+--> Like operator is very important concept of mysql. it  is used for fetching records
+based on the condition given in the like operator.
+--> Like operator is used when we may not the full information
+--> like operator is not a case sensitive in mysql.
+London
+LONDON
+LonDoN
+--> Like operator can be used all data types if required.
+--> Like operators should be works faster.
+--> When the size of table is more than Lakhs and millions of tupples.
+
+            
+33)WAQ to print all salespeople who placed in city whose strt with L?
+ select * from salespeople
+    -> where city like 'L%';
+34)  select * from salespeople
+    -> where comm like '4%';
+
+## Wild cards/wild characters/meta characters
+**********************************************
+1)% :- is used for patterns of numeric and Characters value and dates.
+2)_ :- Every underscore represent a character of string or numeric number
+        or date or special characters from the table.
+            
+WAQ to fetch all salespeople who are posted in city where city name is of 6 charachters.
+only print snum, sname and city(use like operator with '______')?
+-->select snum, sname, city
+    -> from salespeople
+    -> where city like '______';
+
+Waq to print all salespeople who are posted in city which is not locateed in 6 charcters?
+--> select snum, sname, city
+    -> from salespeople
+    -> where city not like '______';
 
 
+WAQ to print all salespeople where character is 4 letter.
+-->select * from salespeople
+    -> where sname like '____';
+Empty set (0.00 sec)
+
+WAQ to print all salespeople where character is 7 letter.
+-->  select * from salespeople
+    -> where sname like '_______';
+Empty set (0.00 sec)
+
+ select * from salespeople
+    -> where comm like '____.__';
+
+WAQ to fetch all salespeople who posted in city city name ends with i?
+-->
+ select snum, sname, city
+    -> from salespeople
+    -> where city like '%i';
+
+>In the above query %i means used with like operator means like operator which checks all records 
+where the city name start with anything but it end with i.
+
+select snum, sname, city
+    -> from salespeople
+    -> where ltrim(city) like '%i';
+
+select snum, sname, city
+    -> from salespeople
+    -> where rtrim(city) like '%i';
+
+select snum, sname, city
+    -> from salespeople
+    -> where trim(city) like '%i';
+
+********************************
+## Foreign Key 
+
+Foregin key is a key whih is already primary key in another table.
+One table can have many foreign keys.
+Duplicate values are allowed.
+Foreign key should not have null values (but sometmes allowed in some projets).
 
 
-
-
-
+Create  customer table with snum as foreign key connecting to parent table salespeople;
+-->
+create table customers
+    -> (cnum numeric(5) primary key,
+    -> cname char(28),
+    -> city varchar(20),
+    -> snum numeric(5) references salespeople(snum));
 
 
 
